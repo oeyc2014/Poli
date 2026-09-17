@@ -1,0 +1,1136 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   POLI — Design tokens (arcade edition)
+   A loud, happy candy-arcade world: sunshine yellow sky, bright
+   teal button shadows, thick cartoon borders, rainbow headline
+   letters. Colour is everywhere on purpose — it is for kids.
+
+   Type: Baloo 2 for everything (plump, bouncy, squishy-soft
+   letters made for early readers), Chewy for giant party
+   headlines, Gochi Hand for crayon-style notes.
+   ============================================================ */
+@theme {
+  --font-display: 'Baloo 2', ui-rounded, 'Trebuchet MS', system-ui, sans-serif;
+  --font-body: 'Baloo 2', ui-rounded, 'Trebuchet MS', system-ui, sans-serif;
+  /* the loud, silly bubble font — logos and celebrations only */
+  --font-party: 'Chewy', 'Baloo 2', ui-rounded, system-ui, sans-serif;
+  /* crayon handwriting — playful notes from the panda */
+  --font-note: 'Gochi Hand', 'Baloo 2', ui-rounded, system-ui, sans-serif;
+
+  /* sunshine — louder and sweeter than before */
+  --color-sun-100: #fff6d9;
+  --color-sun-200: #ffeeb0;
+  --color-sun-300: #ffd166;
+  --color-sun-400: #ffb703;
+  --color-sun-500: #fb923c;
+  --color-sun-600: #f97316;
+  --color-sun-700: #c2540a;
+
+  /* grape — juicy berry purple */
+  --color-grape-100: #f3ecff;
+  --color-grape-200: #e4d6ff;
+  --color-grape-300: #c9aefb;
+  --color-grape-400: #a86ef7;
+  --color-grape-500: #8b46f0;
+  --color-grape-600: #7230cf;
+  --color-grape-700: #5a24a3;
+
+  /* sky — bright pool blue */
+  --color-sky-100: #e3f6ff;
+  --color-sky-200: #c3ecff;
+  --color-sky-300: #7ddcff;
+  --color-sky-400: #2ec9f5;
+  --color-sky-500: #0aa8dd;
+  --color-sky-600: #0388b8;
+  --color-sky-700: #076a91;
+
+  /* grass — bright watermelon green */
+  --color-grass-100: #e2fbea;
+  --color-grass-200: #c0f5d3;
+  --color-grass-300: #7deaa8;
+  --color-grass-400: #3ddc84;
+  --color-grass-500: #16c26c;
+  --color-grass-600: #0a9d56;
+  --color-grass-700: #077a43;
+
+  /* berry — bubblegum pink */
+  --color-berry-100: #ffeef6;
+  --color-berry-200: #ffd3e8;
+  --color-berry-300: #ffa8d2;
+  --color-berry-400: #ff6fb5;
+  --color-berry-500: #f9409a;
+  --color-berry-600: #d61f7d;
+  --color-berry-700: #a81661;
+
+  /* coral — punchy tomato */
+  --color-coral-100: #ffeae2;
+  --color-coral-200: #ffcdbb;
+  --color-coral-300: #ffa584;
+  --color-coral-400: #ff7a50;
+  --color-coral-500: #f9562b;
+  --color-coral-600: #d63d17;
+  --color-coral-700: #a82e10;
+
+  /* ink — soft black with a friendly warmth */
+  --color-ink-100: #eee9f2;
+  --color-ink-200: #d4cbe0;
+  --color-ink-300: #a89bbd;
+  --color-ink-400: #7d6f99;
+  --color-ink-500: #5c5078;
+  --color-ink-600: #4a3f63;
+  --color-ink-700: #39304d;
+  --color-ink-900: #413364;
+
+  --color-cream-50: #fff9ee;
+  --color-cream-100: #fff1d6;
+  --color-cream-200: #ffe3ad;
+
+  /* brand mint — now a zesty lime-teal signature */
+  --color-mint-100: #e0fbf2;
+  --color-mint-200: #b6f5e0;
+  --color-mint-300: #71e9c4;
+  --color-mint-400: #2fd9aa;
+  --color-mint-500: #12c192;
+  --color-mint-600: #0a9d76;
+  --color-mint-700: #077a5b;
+
+  --radius-blob: 2rem;
+  --shadow-chunk: 0 6px 0 0 rgba(43, 34, 68, 0.9), 0 16px 30px -12px rgba(43, 34, 68, 0.35);
+  --shadow-chunk-sm: 0 4px 0 0 rgba(43, 34, 68, 0.85);
+  --shadow-pop: 0 14px 34px -14px rgba(43, 34, 68, 0.45);
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-body);
+    font-weight: 500;
+    color: var(--color-ink-900);
+    background: #ffd166;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1.14;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.005em;
+  }
+
+  /* the loud, silly bubble font — logos and celebrations only */
+  .font-party {
+    font-family: var(--font-party);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    line-height: 1.16;
+  }
+
+  /* crayon notes from the panda */
+  .font-note {
+    font-family: var(--font-note);
+    letter-spacing: 0.01em;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-grape-400);
+    outline-offset: 2px;
+    border-radius: 12px;
+  }
+
+  ::selection {
+    background: var(--color-sun-300);
+    color: var(--color-ink-900);
+  }
+}
+
+/* ============================================================
+   Cozy night — a warm, twinkly dark sky instead of glaring white.
+   Only the page + paper surfaces change, so every text colour in
+   the app keeps its contrast.
+   ============================================================ */
+[data-theme='night'] body {
+  background: #232c3a;
+}
+
+[data-theme='night'] .card3d {
+  background: #f2f3f4;
+  border-color: #1a222e;
+  box-shadow: 0 6px 0 0 rgba(0, 0, 0, 0.35);
+}
+
+[data-theme='night'] .glass {
+  background: rgba(242, 243, 244, 0.86);
+  border-bottom-color: rgba(26, 34, 46, 0.3);
+}
+
+[data-theme='night'] ::-webkit-scrollbar-track {
+  background: rgba(35, 44, 58, 0.6);
+}
+
+[data-theme='night'] .text-pop {
+  -webkit-text-stroke: 3px rgba(26, 34, 46, 0.92);
+  text-shadow: 0 4px 0 rgba(26, 34, 46, 0.35);
+}
+
+[data-theme='night'] .text-pop-sm {
+  -webkit-text-stroke: 2px rgba(26, 34, 46, 0.9);
+}
+
+/* ============================================================
+   Scrollbar — slim and friendly
+   ============================================================ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.45);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-sun-400);
+  border-radius: 99px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-sun-500);
+}
+
+/* ============================================================
+   Reusable surfaces
+   ============================================================ */
+
+/* The signature Poli "pushable" button — chunky arcade 3D.
+   Press it and it squashes down into its own shadow. */
+.btn3d {
+  --btn-shadow: var(--color-ink-900);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border-radius: 1.5rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  border: 3px solid var(--color-ink-900);
+  box-shadow: 0 6px 0 0 var(--btn-shadow);
+  transform: translateY(0);
+  transition:
+    transform 0.1s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.1s ease,
+    filter 0.15s ease;
+  user-select: none;
+}
+/* Every button lifts towards the cursor, then gets squashed flat on press.
+   Kept safe for touch devices with (hover: hover) so phones don't stick. */
+@media (hover: hover) {
+  .btn3d:hover:not(:disabled) {
+    filter: brightness(1.06) saturate(1.1);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0 0 var(--btn-shadow);
+  }
+}
+.btn3d:active:not(:disabled) {
+  transform: translateY(6px);
+  box-shadow: 0 0 0 0 var(--btn-shadow);
+}
+.btn3d:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: 0 4px 0 0 rgba(43, 34, 68, 0.3);
+}
+
+/* Soft floating card */
+.card3d {
+  background: #fff;
+  border: 3px solid var(--color-ink-900);
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 0 0 rgba(43, 34, 68, 0.85);
+  transition:
+    transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.16s ease;
+}
+
+/* Add to a card that can be tapped: it lifts gently on hover. */
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 10px 0 0 rgba(43, 34, 68, 0.85),
+    var(--shadow-pop);
+}
+.card-hover:active {
+  transform: translateY(2px) scale(0.995);
+  box-shadow: 0 3px 0 0 rgba(43, 34, 68, 0.85);
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Chunky text outline for headings over scenery */
+.text-pop {
+  -webkit-text-stroke: 3px var(--color-ink-900);
+  paint-order: stroke fill;
+  text-shadow: 0 5px 0 rgba(43, 34, 68, 0.3);
+}
+.text-pop-sm {
+  -webkit-text-stroke: 2px var(--color-ink-900);
+  paint-order: stroke fill;
+}
+
+.rainbow-text {
+  background: linear-gradient(92deg, #ff7a50, #ffb703, #ffd166, #3ddc84, #2ec9f5, #8b46f0, #f9409a, #ff7a50);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow-pan 9s linear infinite;
+}
+
+/* Hide scrollbar but keep scrolling (for carousels) */
+.no-bar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-bar::-webkit-scrollbar {
+  display: none;
+}
+
+.tap-shrink {
+  transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.tap-shrink:active {
+  transform: scale(0.94);
+}
+
+/* A gentle stripe that marches along — used on progress fills */
+.bar-stripes {
+  background-image: linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.35) 0 25%,
+    rgba(255, 255, 255, 0) 25% 50%,
+    rgba(255, 255, 255, 0.35) 50% 75%,
+    rgba(255, 255, 255, 0) 75% 100%
+  );
+  background-size: 22px 22px;
+  animation: poli-marching 1.6s linear infinite;
+}
+
+/* Per-letter bouncy text (see <BouncyText />) */
+.bouncy-letter {
+  display: inline-block;
+  will-change: transform;
+}
+
+/* ============================================================
+   Keyframes — the fun factory
+   ============================================================ */
+@keyframes rainbow-pan {
+  to {
+    background-position: -300% 0;
+  }
+}
+
+@keyframes poli-pop {
+  0% {
+    transform: scale(0.3) rotate(-12deg);
+    opacity: 0;
+  }
+  65% {
+    transform: scale(1.12) rotate(4deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes poli-slide-up {
+  from {
+    transform: translateY(34px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes poli-slide-down {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes poli-slide-in-right {
+  from {
+    transform: translateX(60px) scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes poli-slide-in-left {
+  from {
+    transform: translateX(-60px) scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes poli-zoom-in {
+  from {
+    transform: scale(0.84) translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes poli-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes poli-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes poli-float-lg {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-18px) rotate(1.5deg);
+  }
+}
+
+/* A lazier, wider float for background scenery */
+@keyframes poli-float-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-2deg);
+  }
+  50% {
+    transform: translate3d(0, -18px, 0) rotate(2deg);
+  }
+}
+
+@keyframes poli-bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(2deg);
+  }
+}
+
+/* Quick one-shot hop — good for "notice me" moments */
+@keyframes poli-hop {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  35% {
+    transform: translateY(-14px) scale(1.05, 0.95);
+  }
+  70% {
+    transform: translateY(0) scale(0.96, 1.04);
+  }
+}
+
+@keyframes poli-wobble {
+  0%,
+  100% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+
+@keyframes poli-jiggle {
+  0%,
+  100% {
+    transform: rotate(-3deg) scale(1);
+  }
+  50% {
+    transform: rotate(3deg) scale(1.03);
+  }
+}
+
+@keyframes poli-wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(-9deg);
+  }
+  40% {
+    transform: rotate(9deg);
+  }
+  60% {
+    transform: rotate(-6deg);
+  }
+  80% {
+    transform: rotate(6deg);
+  }
+}
+
+@keyframes poli-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  15% {
+    transform: translateX(-12px) rotate(-3deg);
+  }
+  30% {
+    transform: translateX(11px) rotate(3deg);
+  }
+  45% {
+    transform: translateX(-9px) rotate(-2deg);
+  }
+  60% {
+    transform: translateX(8px) rotate(2deg);
+  }
+  80% {
+    transform: translateX(-4px);
+  }
+}
+
+@keyframes poli-jelly {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.92, 1.1);
+  }
+  45% {
+    transform: scale(1.1, 0.9);
+  }
+  65% {
+    transform: scale(0.96, 1.04);
+  }
+  85% {
+    transform: scale(1.03, 0.97);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+/* Squash-and-stretch on tap — every tap feels physical */
+@keyframes poli-squish {
+  0% {
+    transform: scale(1, 1);
+  }
+  40% {
+    transform: scale(1.14, 0.86);
+  }
+  70% {
+    transform: scale(0.94, 1.06);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes poli-rubber {
+  0% {
+    transform: scale(1, 1);
+  }
+  30% {
+    transform: scale(1.3, 0.76);
+  }
+  45% {
+    transform: scale(0.84, 1.2);
+  }
+  62% {
+    transform: scale(1.12, 0.9);
+  }
+  78% {
+    transform: scale(0.96, 1.04);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes poli-tada {
+  0% {
+    transform: scale(1) rotate(0);
+  }
+  10%,
+  20% {
+    transform: scale(0.9) rotate(-4deg);
+  }
+  30%,
+  50%,
+  70% {
+    transform: scale(1.14) rotate(4deg);
+  }
+  40%,
+  60% {
+    transform: scale(1.14) rotate(-4deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes poli-bounce-in {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  55% {
+    transform: scale(1.18);
+    opacity: 1;
+  }
+  75% {
+    transform: scale(0.94);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Letters drop in one at a time; used by <BouncyText /> */
+@keyframes poli-letter-pop {
+  0% {
+    transform: translateY(0.62em) scale(0.35) rotate(-14deg);
+    opacity: 0;
+  }
+  62% {
+    transform: translateY(-0.14em) scale(1.16) rotate(5deg);
+    opacity: 1;
+  }
+  82% {
+    transform: translateY(0.05em) scale(0.96) rotate(-2deg);
+  }
+  100% {
+    transform: translateY(0) scale(1) rotate(0);
+  }
+}
+
+/* Letters keep gently waving after they land */
+@keyframes poli-letter-wave {
+  0%,
+  55%,
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+  28% {
+    transform: translateY(-0.18em) rotate(-4deg);
+  }
+}
+
+@keyframes poli-pulse-glow {
+  0%,
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(255, 215, 100, 0),
+      0 6px 0 0 rgba(43, 34, 68, 0.85);
+  }
+  50% {
+    box-shadow:
+      0 0 0 14px rgba(255, 215, 100, 0),
+      0 0 30px 6px rgba(255, 215, 100, 0.65),
+      0 6px 0 0 rgba(43, 34, 68, 0.85);
+  }
+}
+
+/* A ring that keeps expanding off a button — "press me!" */
+@keyframes poli-pulse-ring {
+  0% {
+    transform: scale(0.82);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
+@keyframes poli-ring {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.85;
+  }
+  100% {
+    transform: scale(2.1);
+    opacity: 0;
+  }
+}
+
+@keyframes poli-spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Gems and coins flip in 3D */
+@keyframes poli-coin {
+  0% {
+    transform: perspective(360px) rotateY(0deg);
+  }
+  100% {
+    transform: perspective(360px) rotateY(360deg);
+  }
+}
+
+@keyframes poli-drift {
+  from {
+    transform: translateX(-25vw);
+  }
+  to {
+    transform: translateX(125vw);
+  }
+}
+
+/* Scenery baked into the sky: hot-air balloons climbing past */
+@keyframes poli-balloon {
+  0% {
+    transform: translate3d(-12vw, 10vh, 0) rotate(-4deg);
+  }
+  100% {
+    transform: translate3d(108vw, -18vh, 0) rotate(7deg);
+  }
+}
+
+/* Blobs that slowly morph shape while they float */
+@keyframes poli-blob {
+  0%,
+  100% {
+    border-radius: 46% 54% 58% 42% / 52% 44% 56% 48%;
+    transform: translate3d(0, 0, 0) rotate(0deg) scale(1);
+  }
+  33% {
+    border-radius: 58% 42% 44% 56% / 44% 58% 42% 56%;
+    transform: translate3d(2%, -3%, 0) rotate(10deg) scale(1.07);
+  }
+  66% {
+    border-radius: 42% 58% 54% 46% / 58% 46% 54% 42%;
+    transform: translate3d(-2%, 2%, 0) rotate(-8deg) scale(0.95);
+  }
+}
+
+@keyframes poli-bg-pan {
+  to {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes poli-hue {
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes poli-fall {
+  0% {
+    transform: translateY(-15vh) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(112vh) rotate(760deg);
+    opacity: 0.9;
+  }
+}
+
+@keyframes poli-rise {
+  0% {
+    transform: translate(0, 0) scale(0.6);
+    opacity: 0;
+  }
+  25% {
+    transform: translate(0, -14px) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, -110px) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes poli-burst {
+  0% {
+    transform: translate(0, 0) scale(0.4);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--bx, 0), var(--by, 0)) scale(0.2);
+    opacity: 0;
+  }
+}
+
+@keyframes poli-bar-fill {
+  from {
+    width: 0%;
+  }
+}
+
+/* vertical chart bars growing up from the baseline */
+@keyframes poli-bar-grow {
+  from {
+    transform: scaleY(0.04);
+  }
+}
+
+@keyframes poli-shimmer {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  100% {
+    transform: translateX(320%) skewX(-18deg);
+  }
+}
+
+@keyframes poli-sheen {
+  0% {
+    transform: translateX(-140%) skewX(-16deg);
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(260%) skewX(-16deg);
+    opacity: 0;
+  }
+}
+
+@keyframes poli-blossom {
+  0% {
+    transform: scale(0) rotate(-90deg);
+  }
+  60% {
+    transform: scale(1.35) rotate(12deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes poli-flap {
+  0%,
+  100% {
+    transform: rotate(-16deg);
+  }
+  50% {
+    transform: rotate(14deg);
+  }
+}
+
+@keyframes poli-blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.08);
+  }
+}
+
+/* Sparkles that twinkle in the night sky */
+@keyframes poli-twinkle {
+  0%,
+  100% {
+    transform: scale(0.65) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: scale(1.2) rotate(22deg);
+    opacity: 1;
+  }
+}
+
+@keyframes poli-heartbeat {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  14% {
+    transform: scale(1.16);
+  }
+  28% {
+    transform: scale(1);
+  }
+  42% {
+    transform: scale(1.12);
+  }
+  70% {
+    transform: scale(1);
+  }
+}
+
+@keyframes poli-marching {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 44px 0;
+  }
+}
+
+/* ============================================================
+   Animation utilities
+   ============================================================ */
+
+/* balloons climbing from the bottom of the arcade sky */
+@keyframes poli-rise-up {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-130vh);
+  }
+}
+
+/* the road racing towards the player */
+@keyframes poli-road {
+  to {
+    background-position-y: 120px;
+  }
+}
+.anim-pop {
+  animation: poli-pop 0.46s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.anim-up {
+  animation: poli-slide-up 0.42s cubic-bezier(0.22, 1.2, 0.36, 1) both;
+}
+.anim-down {
+  animation: poli-slide-down 0.4s cubic-bezier(0.22, 1.2, 0.36, 1) both;
+}
+.anim-right {
+  animation: poli-slide-in-right 0.42s cubic-bezier(0.22, 1.2, 0.36, 1) both;
+}
+.anim-left {
+  animation: poli-slide-in-left 0.42s cubic-bezier(0.22, 1.2, 0.36, 1) both;
+}
+.anim-zoom {
+  animation: poli-zoom-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.anim-fade {
+  animation: poli-fade 0.5s ease both;
+}
+.anim-float {
+  animation: poli-float 4.4s ease-in-out infinite;
+}
+.anim-float-lg {
+  animation: poli-float-lg 5.6s ease-in-out infinite;
+}
+.anim-float-drift {
+  animation: poli-float-drift 7s ease-in-out infinite;
+}
+.anim-bob {
+  animation: poli-bob 3.2s ease-in-out infinite;
+}
+.anim-hop {
+  animation: poli-hop 0.75s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.anim-wobble {
+  animation: poli-wobble 2.2s ease-in-out infinite;
+}
+.anim-jiggle {
+  animation: poli-jiggle 1.9s ease-in-out infinite;
+}
+.anim-wiggle {
+  animation: poli-wiggle 0.7s ease-in-out;
+}
+.anim-shake {
+  animation: poli-shake 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+}
+.anim-jelly {
+  animation: poli-jelly 0.62s ease both;
+}
+.anim-squish {
+  animation: poli-squish 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.anim-rubber {
+  animation: poli-rubber 0.62s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.anim-tada {
+  animation: poli-tada 1s ease both;
+}
+.anim-bounce-in {
+  animation: poli-bounce-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.anim-glow {
+  animation: poli-pulse-glow 2.4s ease-in-out infinite;
+}
+.anim-ring::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  border: 4px solid rgba(255, 215, 100, 0.9);
+  animation: poli-pulse-ring 2.2s ease-out infinite;
+  pointer-events: none;
+}
+.anim-spin-slow {
+  animation: poli-spin-slow 9s linear infinite;
+}
+.anim-coin {
+  animation: poli-coin 2.6s ease-in-out infinite;
+}
+.anim-heartbeat {
+  animation: poli-heartbeat 1.6s ease-in-out infinite;
+}
+.anim-blink {
+  animation: poli-blink 4.2s ease-in-out infinite;
+}
+.anim-flap {
+  animation: poli-flap 1.1s ease-in-out infinite;
+  transform-origin: top center;
+}
+.anim-blossom {
+  animation: poli-blossom 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.anim-marching {
+  animation: poli-marching 1.6s linear infinite;
+}
+.anim-bar-grow {
+  transform-origin: bottom center;
+  animation: poli-bar-grow 0.65s cubic-bezier(0.22, 1.2, 0.36, 1) backwards;
+}
+.anim-twinkle {
+  animation: poli-twinkle 2.6s ease-in-out infinite;
+}
+.anim-blob {
+  animation: poli-blob 18s ease-in-out infinite;
+}
+.anim-hue {
+  animation: poli-hue 9s linear infinite;
+}
+
+/* stagger helpers */
+.stagger > * {
+  animation: poli-slide-up 0.45s cubic-bezier(0.22, 1.2, 0.36, 1) both;
+}
+.stagger > *:nth-child(1) {
+  animation-delay: 0.04s;
+}
+.stagger > *:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.stagger > *:nth-child(3) {
+  animation-delay: 0.16s;
+}
+.stagger > *:nth-child(4) {
+  animation-delay: 0.22s;
+}
+.stagger > *:nth-child(5) {
+  animation-delay: 0.28s;
+}
+.stagger > *:nth-child(6) {
+  animation-delay: 0.34s;
+}
+.stagger > *:nth-child(7) {
+  animation-delay: 0.4s;
+}
+.stagger > *:nth-child(8) {
+  animation-delay: 0.46s;
+}
+.stagger > *:nth-child(9) {
+  animation-delay: 0.52s;
+}
+.stagger > *:nth-child(10) {
+  animation-delay: 0.58s;
+}
+.stagger > *:nth-child(11) {
+  animation-delay: 0.64s;
+}
+.stagger > *:nth-child(12) {
+  animation-delay: 0.7s;
+}
+.stagger > *:nth-child(n + 13) {
+  animation-delay: 0.74s;
+}
+
+/* ============================================================
+   Calm motion — the "Calm animations" setting, or the OS asking
+   for less movement. Still fun, just much quieter.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.06s !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+[data-motion='calm'] *,
+[data-motion='calm'] *::before,
+[data-motion='calm'] *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.06s !important;
+}
+
+html[data-motion='calm'] {
+  scroll-behavior: auto;
+}
